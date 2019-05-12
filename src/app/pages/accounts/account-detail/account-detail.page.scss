@@ -1,0 +1,14 @@
+.account-detail {
+    padding: 1px 10px;
+    .end {
+        float: right;
+    }
+    .start {
+        float: left;
+    }
+}
+
+.account-detail:first-child {
+    padding-top: 10px;
+    padding-bottom: 8px;
+}

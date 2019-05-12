@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="accounts"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Account - {{account.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content class="bg-white" style="padding:2px">
+      <div class="account-detail" style="font-size:18px">
+        <ion-label class="start" color="danger">Current Balance:</ion-label>
+        <ion-label class="end" color="danger">{{0 | currency:currencySymbol}}</ion-label>
+        <div class="clearfix"></div>
+      </div>
+      <div class="account-detail">
+        <ion-label class="start">Initial Balance:</ion-label>&nbsp;&nbsp;
+        <ion-label class="end" color="secondary">{{account.initialBalance | currency:currencySymbol}}</ion-label>
+        <div class="clearfix"></div>
+      </div>
+      <div class="account-detail">
+        <ion-label class="start">Total Debit:</ion-label>&nbsp;&nbsp;
+        <ion-label class="end" color="secondary">{{0 | currency:currencySymbol}}</ion-label>
+        <div class="clearfix"></div>
+      </div>
+      <div class="account-detail">
+        <ion-label class="start">Total Credit:</ion-label>&nbsp;&nbsp;
+        <ion-label class="end" color="secondary">{{0 | currency:currencySymbol}}</ion-label>
+        <div class="clearfix"></div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,87 @@
+.splash {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fc790e;
+    background: url('../assets/images/nav-background.png') no-repeat 10% 10%;
+    .spinner {
+        width: 40px;
+        height: 40px;
+        background-color: #ccc;
+        margin: 100px auto;
+        -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+        animation: sk-rotateplane 1.2s infinite ease-in-out;
+    }
+}
+
+@-webkit-keyframes sk-rotateplane {
+    0% {
+        -webkit-transform: perspective(120px)
+    }
+    50% {
+        -webkit-transform: perspective(120px) rotateY(180deg)
+    }
+    100% {
+        -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+    }
+}
+
+@keyframes sk-rotateplane {
+    0% {
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+        -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+    }
+    50% {
+        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+        -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+    }
+    100% {
+        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    }
+}
+
+.menu-content {
+    --background: url('../assets/images/nav-background.png') no-repeat 10% 10%;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.menu-card {
+    padding: 0px 0px 15px 0px;
+    margin: 0px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid rgb(252, 250, 250) !important;
+}
+
+.menu-list {
+    --ion-background-color: transparent;
+}
+
+.menu-item {
+    --ion-background-color: transparent;
+    --ion-text-color: rgb(247, 247, 247);
+    ion-icon {
+        --ion-text-color-rgb: rgb(247, 247, 247);
+    }
+}
+
+.menu-item.active {
+    --ion-background-color: rgb(231, 229, 228);
+    --ion-text-color: #f79b11;
+    ion-icon {
+        --ion-text-color-rgb: #f79b11;
+    }
+}
+
+.menu-separator {
+    border-bottom: 1px solid rgba(252, 250, 250, 1) !important;
+}

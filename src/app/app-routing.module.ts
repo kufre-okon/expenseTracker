@@ -9,11 +9,35 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
+    loadChildren: './pages/home/home.module#HomePageModule'
   },
   {
     path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
+    loadChildren: './pages/list/list.module#ListPageModule'
+  },
+  {
+    path: 'setting',
+    loadChildren: './pages/setting/setting.module#SettingPageModule'
+  },
+  {
+    path: 'budgets',
+    loadChildren: './pages/budgets/budgets.module#BudgetsPageModule'
+  },
+  {
+    path: 'transactions',
+    loadChildren: './pages/transactions/transactions.module#TransactionsPageModule'
+  },
+  {
+    path: 'recurringtransaction',
+    loadChildren: './pages/recurringtransaction/recurringtransaction.module#RecurringtransactionPageModule'
+  },
+  {
+    path: 'category',
+    loadChildren: './pages/category/category.module#CategoryPageModule'
+  },
+  {
+    path: 'accounts',
+    loadChildren: './pages/accounts/accounts.module#AccountsPageModule'
   }
 ];
 
@@ -23,4 +47,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

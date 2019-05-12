@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="accounts"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="light" size="small" (click)="save()">Save</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="accountForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item class="form-item">
+            <ion-label position="floating" color="primary">Name</ion-label>
+            <ion-input class="form-control" formControlName="name" type="text"></ion-input>
+          </ion-item>
+          <ng-container *ngFor="let validation of validation_messages.name">
+            <div class="error-message" *ngIf="form.name.hasError(validation.type) &&
+             (form.name.dirty || form.name.touched || attemptedSaved)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item class="form-item">
+            <ion-label position="floating" color="primary">Initial Balance</ion-label>
+            <ion-input class="form-control" formControlName="initialBalance" type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item class="form-item">
+            <ion-label position="floating" color="primary">Initial Date</ion-label>                   
+            <ion-input readonly formControlName="initialDate" [liIonic4Datepicker]="datePickerObj"></ion-input>            
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating" color="primary">Description</ion-label>
+            <ion-textarea class="form-control" formControlName="note"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

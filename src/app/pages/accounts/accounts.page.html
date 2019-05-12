@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Accounts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <h5>
+      <span class="text-muted">
+        Total Balance:
+      </span>
+      <span class="text-black text-bold">
+        {{totalAccountbalance | currency:global.currencySymbol}}
+      </span>
+    </h5>
+  </ion-item>
+  <ion-list>
+    <ion-item-sliding *ngFor="let acct of accounts">
+      <ion-item (click)="details(acct)" detail>
+        <app-fancy-badge content="{{acct.name}}" slot="start"></app-fancy-badge>
+        <div class="m-b-10 m-t-10">
+          <div class="text-muted m-b-10">
+            {{acct.name}}
+          </div>
+          <div class="text-black text-bold">
+            {{acct.initialBalance | currency:global.currencySymbol}}
+          </div>
+        </div>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="editAccount(acct)" color="tertiary" expandable>
+          Edit
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" (click)="addAccount()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="budgets"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Configure Budget</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="light" size="small" (click)="save()">Save</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="budgetForm">
+
+    <ion-item class="form-item">
+      <ion-label position="floating" color="primary">Name</ion-label>
+      <ion-input class="form-control" formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.name">
+      <div class="error-message" *ngIf="form.name.hasError(validation.type) &&
+                 (form.name.dirty || form.name.touched || attemptedSaved)">
+        {{ validation.message }}
+      </div>
+    </ng-container>
+
+    <ion-item class="form-item">
+      <ion-label position="floating" color="primary">Start Date</ion-label>
+      <ion-input readonly formControlName="startDate" [liIonic4Datepicker]="datePickerObj"></ion-input>
+    </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.startDate">
+      <div class="error-message" *ngIf="form.startDate.hasError(validation.type) &&
+                 (form.startDate.dirty || form.startDate.touched || attemptedSaved)">
+        {{ validation.message }}
+      </div>
+    </ng-container>
+
+    <ion-item class="form-item">
+      <ion-label position="floating" color="primary">End Date</ion-label>
+      <ion-input readonly formControlName="endDate" [liIonic4Datepicker]="datePickerObj"></ion-input>
+    </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.endDate">
+      <div class="error-message" *ngIf="form.endDate.hasError(validation.type) &&
+                 (form.endDate.dirty || form.endDate.touched || attemptedSaved)">
+        {{ validation.message }}
+      </div>
+    </ng-container>
+
+    <ion-item>
+      <ion-label position="floating" color="primary">Notes</ion-label>
+      <ion-textarea class="form-control" formControlName="note"></ion-textarea>
+    </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.note">
+      <div class="error-message" *ngIf="form.note.hasError(validation.type) &&
+                 (form.note.dirty || form.note.touched || attemptedSaved)">
+        {{ validation.message }}
+      </div>
+    </ng-container>
+  </form>
+</ion-content>
