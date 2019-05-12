@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Budgets</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let bud of budgets">
+      <ion-item (click)="details(bud)" detail>
+        <div class="m-b-10 m-t-10">
+          <div class="text-muted">
+            {{bud.name}}
+          </div>
+          <ion-text color="danger">
+            <div class="">
+              {{bud.startDate}} - {{bud.endDate}}
+            </div>
+          </ion-text>
+          <ion-text color="danger" slot="end">
+            <span>*</span>
+          </ion-text>
+        </div>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="editBudget(bud)" color="tertiary" expandable>
+          Edit
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" (click)="addBudget()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

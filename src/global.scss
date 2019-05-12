@@ -9,3 +9,116 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+/* global css */
+
+ion-content {
+    --ion-background-color: rgb(244, 244, 244);
+}
+
+/* to correct ellipses attached to long option text on select */
+
+ion-select {
+    max-width: 100% !important;
+}
+
+.form-item {
+    --min-height: 15px !important;
+    min-height: 15px !important;
+}
+
+.bg-white {
+    --ion-background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+}
+
+.error-message {
+    color: #f04141;
+    padding: 5px;
+}
+
+.text-muted {
+    color: rgb(112, 112, 112);
+}
+
+.text-black {
+    color: rgb(0, 0, 0);
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.m-b-10 {
+    margin-bottom: 10px !important;
+}
+
+.m-t-10 {
+    margin-top: 10px !important;
+}
+
+.m-10 {
+    margin: 10px !important;
+}
+
+.m-r-15 {
+    margin-right: 15px !important;
+}
+
+.li-ionic4-datePicker {
+    .modal-wrapper {
+        height: 75%;
+        width: 310px;
+        border-radius: 0px;
+        @media (min-width: 768px) {
+            width: 350px;
+            height: 65%;
+        }
+    }
+}
+
+.scroll-y,
+.scroll-x {
+    position: relative;
+    overflow: hidden;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.scroll-x {
+    overflow-x: auto;
+}
+
+.scroll-y {
+    overflow-y: auto;
+}
+
+/* ************************** action sheet *****************************/
+
+ion-action-sheet {
+    .action-sheet-title.sc-ion-action-sheet-md {
+        border-bottom: 1px solid #ccc;
+        color: rgb(228, 112, 4);
+        font-weight: bold;
+    }
+    .action-sheet-button.ion-activatable.action-sheet-destructive.sc-ion-action-sheet-md {
+        .action-sheet-button-inner.sc-ion-action-sheet-md,
+        .action-sheet-button-inner.sc-ion-action-sheet-md ion-icon {
+            color: #3880ff;
+        }
+    }
+    .action-sheet-group.action-sheet-group-cancel.sc-ion-action-sheet-md {
+        border-top: 1px solid #ccc;
+        .action-sheet-button.ion-activatable.action-sheet-cancel.sc-ion-action-sheet-md {
+            .action-sheet-button-inner.sc-ion-action-sheet-md,
+            .action-sheet-button-inner.sc-ion-action-sheet-md ion-icon {
+                color: #f04141;
+            }
+        }
+    }
+}
+
+.clearfix {
+    float:none;
+    clear: both;
+}

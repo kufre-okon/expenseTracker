@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="light" size="small" (click)="save()">Save</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="settingForm">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Currency, Date and Time</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item class="form-item">
+          <ion-label position="floating" color="primary">Currency Symbol</ion-label>
+          <ion-input class="form-control" formControlName="currencySymbol" type="text"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.currencySymbol">
+          <div class="error-message" *ngIf="form.currencySymbol.hasError(validation.type) &&
+           (form.currencySymbol.dirty || form.currencySymbol.touched || attemptedSaved)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+        <ion-item class="form-item">
+          <ion-label position="floating" color="primary">Date Format</ion-label>
+          <ion-select class="form-control" interface="popover" formControlName="dateFormatId">
+            <ion-select-option *ngFor="let df of dateFormats" [value]="df.Id">{{df.Name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.dateFormatId">
+          <div class="error-message" *ngIf="form.dateFormatId.hasError(validation.type) && 
+          (form.dateFormatId.dirty || form.dateFormatId.touched || attemptedSaved)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+        <ion-item class="form-item">
+          <ion-label position="floating" color="primary">Time Format</ion-label>
+          <ion-select class="form-control" interface="popover" formControlName="timeFormatId">
+            <ion-select-option *ngFor="let tf of timeFormats" [value]="tf.Id">{{tf.Name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.timeFormatId">
+          <div class="error-message" *ngIf="form.timeFormatId.hasError(validation.type) && 
+          (form.timeFormatId.dirty || form.timeFormatId.touched || attemptedSaved)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Security</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label color="primary">Enable Lock with a PIN</ion-label>
+          <ion-toggle #enableLock formControlName="enableLock"></ion-toggle>
+        </ion-item>
+        <ng-container *ngIf="enableLock.checked">
+          <ion-item class="form-item">
+            <ion-label position="floating" color="primary">PIN Code</ion-label>
+            <ion-input class="form-control" formControlName="pinCode" type="number" style="-webkit-text-security:disc;"></ion-input>
+          </ion-item>
+          <ng-container *ngFor="let validation of validation_messages.pinCode">
+            <div class="error-message" *ngIf="form.pinCode.hasError(validation.type) && 
+          (form.pinCode.dirty || form.pinCode.touched || attemptedSaved)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+          <ion-item class="form-item">
+            <ion-label position="floating" color="primary">Confirm PIN Code</ion-label>
+            <ion-input class="form-control" formControlName="confirmPinCode" type="number" style="-webkit-text-security:disc;"></ion-input>
+          </ion-item>
+          <ng-container *ngFor="let validation of validation_messages.confirmPinCode">
+            <div class="error-message" *ngIf="form.confirmPinCode.hasError(validation.type) && 
+          (form.confirmPinCode.dirty || form.confirmPinCode.touched || attemptedSaved)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </ng-container>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Notification</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label title="Daily Reminder" color="primary">Daily Reminder</ion-label>
+          <ion-toggle formControlName="enableDailyReminderNotification"></ion-toggle>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

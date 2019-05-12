@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="category"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="categoryForm">
+
+    <ion-item class="form-item">
+      <ion-label position="floating" color="primary">Name</ion-label>
+      <ion-input class="form-control" formControlName="name" type="text"></ion-input>
+    </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.name">
+      <div class="error-message" *ngIf="form.name.hasError(validation.type) &&
+                 (form.name.dirty || form.name.touched || attemptedSaved)">
+        {{ validation.message }}
+      </div>
+    </ng-container>
+    <ion-item line="form-item">
+      <ion-label position="floating" color="primary">Type</ion-label>
+      <ion-select formControlName="type" interface="popover" class="form-control">
+        <ion-select-option *ngFor="let ct of catTypes" [value]="ct.id">{{ct.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ng-container *ngFor="let validation of validation_messages.type">
+      <div class="error-message" *ngIf="form.type.hasError(validation.type) &&
+                   (form.type.dirty || form.type.touched || attemptedSaved)">
+        {{ validation.message }}
+      </div>
+    </ng-container>
+    <br />
+    <br />
+    <div style="text-align:right; margin-right:5px">
+      <ion-button slot="end" color="primary" fill="solid" (click)="save()">Save</ion-button>
+    </div>
+  </form>
+</ion-content>

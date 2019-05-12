@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Categories</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment class="cat-segment" color="secondary" mode="ios" (ionChange)="segmentChanged($event)">
+    <ion-segment-button mode="ios" value="income" checked>
+      <ion-label>Income</ion-label>
+    </ion-segment-button>
+    <ion-segment-button mode="ios" value="expense">
+      <ion-label>Expense</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div style="height:90%" class="scroll-y scroll-x">
+    <ion-list *ngIf="isExpenseView">
+      <ion-item *ngFor="let cat of expenseCategories; let idx = index" (click)="editCategory(cat)" detail>
+        <app-fancy-badge size="badge-35" [bgColor]="getBadgebgColor(idx)" content="{{cat.name}}" slot="start"></app-fancy-badge>
+        <div class="text-muted">
+          {{cat.name}}
+        </div>
+      </ion-item>
+    </ion-list>
+    <ion-list *ngIf="!isExpenseView">
+      <ion-item *ngFor="let cat of incomeCategories; let idx = index" (click)="editCategory(cat)" detail>
+        <app-fancy-badge size="badge-35" [bgColor]="getBadgebgColor(idx)" content="{{cat.name}}" slot="start"></app-fancy-badge>
+        <div class="text-muted">
+          {{cat.name}}
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" (click)="addCategory()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
